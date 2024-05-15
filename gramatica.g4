@@ -1,70 +1,59 @@
 grammar gramatica;
-// Definição dos tokens
-NUMBER : [0-9]+ ;
-DOUBLE : [0-9]+'.'[0-9]+ ;
-ID : [a-zA-Z0-9_]+ ;
 ASSIGN: '=';
-COMMA: ',';
-PLUS: '+';
-MINUS: '-';
-TIMES: '*';
-POW:'^';
-DIVIDE: '/';
+SEMICOLON: ';';
 LPAREN: '(';
 RPAREN: ')';
 LBRACE: '{';
 RBRACE: '}';
-SEMICOLON: ';';
-LSQUAREBRACE: '[';
-RSQUAREBRACE: ']';
-OP_RELACIONAL: '>'|'<'|'>='|'<='|'!=';
-STRING : '"' .*? '"' ;
-WS : [ \t\r\n]+ -> skip ;
+COMMA: ',';
+PLUS: '+';
+MINUS: '-';
+TIMES: '*';
+DIVIDE: '/';
 
+OP_RELACIONAL: '>'|'<'|'>='|'<='|'!='|'==';
+STRING: [a-zA-Z_][a-zA-Z0-9_]*;
+NUMBER: [0-9]+('.'[0-9]+)?;
 
-// Definição das regras da gramática
-program : declarationClass ;
+STRING_LITERAL: '"' .*? '"';
+WS: [ \t\r\n]+ -> skip;
 
-declarationClass: visibility (ID)+ (LBRACE statement+ RBRACE);
+// Definição da gramática
+program: statement*;
 
-statement : declarationTypeVar | ifStatement | forLoop | whileLoop | inputStatement | outputStatement | teste;
+statement:
+    varDeclaration SEMICOLON
+    | ifStatement
+    | whileStatement
+    | forStatement
+    | printfStatement SEMICOLON
+    | scanfStatement SEMICOLON
+    | assignment SEMICOLON
+    | interation;
 
-visibility: 'public'| 'private'|'protected';
-dataType: 'int'| 'String'| 'double';
+varDeclaration: ('int' | 'double' | 'string') STRING (ASSIGN expression);
 
-typeInt: 'int' ID ASSIGN NUMBER SEMICOLON;
-typeString: 'String' ID ASSIGN  STRING SEMICOLON;
-typeDouble: 'double' ID ASSIGN DOUBLE SEMICOLON;
+ifStatement: 'if' LPAREN expression RPAREN LBRACE statement+ RBRACE ('else' LBRACE statement+ RBRACE)?;
 
-declarationTypeVar: visibility (typeInt| typeDouble| typeString);
+whileStatement: 'while' LPAREN expression RPAREN LBRACE statement+ RBRACE;
 
-declarationVar: dataType ID  ASSIGN NUMBER|DOUBLE|STRING;
-assignment: ID ASSIGN NUMBER|DOUBLE|STRING;
+forStatement:
+    'for' LPAREN assignment SEMICOLON expression SEMICOLON interation RPAREN LBRACE statement+ RBRACE;
 
-expression : relaExpr | addExpr;
+printfStatement: 'printf' LPAREN expression RPAREN;
 
-addExpr : mulExpr ((PLUS | MINUS) mulExpr)*;
+scanfStatement: 'scanf' LPAREN STRING RPAREN;
 
-mulExpr : powExpr ((TIMES | DIVIDE) powExpr)*;
+assignment: STRING ASSIGN expression;
 
-powExpr : atom (POW atom)?;
+interation: STRING ('++'|'--') SEMICOLON;
 
-teste: ID ASSIGN addExpr SEMICOLON;
-
-atom : NUMBER
-     | STRING
-     | ID
-     | LPAREN expression RPAREN;
-
-relaExpr:(ID|NUMBER) OP_RELACIONAL (ID|NUMBER);
-
-ifStatement : 'if' LPAREN expression RPAREN LBRACE statement+ RBRACE ('else' LBRACE statement+ RBRACE)? ;
-
-whileLoop : 'while' LPAREN expression RPAREN LBRACE statement+ RBRACE ;
-
-forLoop : 'for' LPAREN (assignment | declarationVar)? SEMICOLON expression? SEMICOLON ID '++'? RPAREN LBRACE statement+ RBRACE ;
-
-inputStatement : 'scanf' LPAREN ID RPAREN SEMICOLON;
-
-outputStatement : 'printf' LPAREN expression RPAREN SEMICOLON;
-
+expression:
+    expression (TIMES|DIVIDE) expression
+    | expression (PLUS|MINUS) expression
+    | expression OP_RELACIONAL expression
+    | NUMBER
+    | STRING_LITERAL
+    | STRING
+    | LPAREN expression RPAREN
+    ;
