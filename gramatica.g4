@@ -10,11 +10,11 @@ PLUS: '+';
 MINUS: '-';
 TIMES: '*';
 DIVIDE: '/';
-
+AMPERSAND: '&';
+POWER: '**';
 OP_RELACIONAL: '>'|'<'|'>='|'<='|'!='|'==';
 STRING: [a-zA-Z_][a-zA-Z0-9_]*;
 NUMBER: [0-9]+('.'[0-9]+)?;
-
 STRING_LITERAL: '"' .*? '"';
 WS: [ \t\r\n]+ -> skip;
 
@@ -40,16 +40,18 @@ whileStatement: 'while' LPAREN expression RPAREN LBRACE statement+ RBRACE;
 forStatement:
     'for' LPAREN assignment SEMICOLON expression SEMICOLON interation RPAREN LBRACE statement+ RBRACE;
 
-printfStatement: 'printf' LPAREN expression RPAREN;
+ampersandVarStatement:AMPERSAND STRING;
+printfStatement:'printf' LPAREN expression (COMMA ampersandVarStatement)? RPAREN;
 
-scanfStatement: 'scanf' LPAREN STRING RPAREN;
+scanfStatement:'scanf' LPAREN expression (COMMA ampersandVarStatement)? RPAREN;
 
-assignment: STRING ASSIGN expression;
+assignment: STRING ASSIGN (expression|scanfStatement);
 
-interation: STRING ('++'|'--') SEMICOLON;
+interation: STRING ('++'|'--');
 
 expression:
-    expression (TIMES|DIVIDE) expression
+    expression(POWER) expression
+    | expression (TIMES|DIVIDE) expression
     | expression (PLUS|MINUS) expression
     | expression OP_RELACIONAL expression
     | NUMBER
