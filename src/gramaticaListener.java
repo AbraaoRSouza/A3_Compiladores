@@ -157,6 +157,16 @@ public interface gramaticaListener extends ParseTreeListener {
 	 */
 	void exitInteracao(gramaticaParser.InteracaoContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link gramaticaParser#interacaoString}.
+	 * @param ctx the parse tree
+	 */
+	void enterInteracaoString(gramaticaParser.InteracaoStringContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link gramaticaParser#interacaoString}.
+	 * @param ctx the parse tree
+	 */
+	void exitInteracaoString(gramaticaParser.InteracaoStringContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link gramaticaParser#expressao}.
 	 * @param ctx the parse tree
 	 */

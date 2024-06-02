@@ -23,14 +23,14 @@ declaracaoVariavelString: STRING LETRAS (IGUAL STRING_LITERAL)? PONTOVIRGULA;
 
 declaracaoVariavel: declaracaoVariavelDouble | declaracaoVariavelInt | declaracaoVariavelString;
 
-estruturaIf: IF LPAREN expressao? RPAREN LBRACE declaracoes+ RBRACE (ELSE LBRACE declaracoes+ RBRACE)?;
+estruturaIf: IF LPAREN expressao RPAREN LBRACE declaracoes+ RBRACE (ELSE LBRACE declaracoes+ RBRACE)?;
 
 estruturaWhile: WHILE LPAREN expressao RPAREN LBRACE declaracoes+ RBRACE;
 
-atribuicaoFor: (INT|DOUBLE)? LETRAS (IGUAL (NUMEROS | NUMEROS_DECIMAL))?;
+atribuicaoFor: (INT|DOUBLE|STRING)? LETRAS (IGUAL (NUMEROS | NUMEROS_DECIMAL| STRING_LITERAL))?;
 
 estruturaFor:
-    FOR LPAREN (atribuicaoFor|LETRAS) PONTOVIRGULA expressao PONTOVIRGULA interacao RPAREN LBRACE declaracoes+ RBRACE;
+    FOR LPAREN (atribuicaoFor|LETRAS) PONTOVIRGULA expressao PONTOVIRGULA (interacao|interacaoString) RPAREN LBRACE declaracoes+ RBRACE;
 
 leituraVar:E_COMERCIAL LETRAS;
 
@@ -40,7 +40,8 @@ estruturaScanf:SCANF LPAREN expressao (VIRGULA leituraVar)? RPAREN PONTOVIRGULA;
 
 atribuicaoVariavel: LETRAS IGUAL expressao PONTOVIRGULA;
 
-interacao: LETRAS (INCREMENTO|DECREMENTO|((MAIS|MENOS) NUMEROS)) PONTOVIRGULA?;
+interacao: LETRAS (INCREMENTO|DECREMENTO|((MAIS|MENOS)IGUAL NUMEROS)) PONTOVIRGULA?;
+interacaoString: LETRAS ((MAIS|MENOS)IGUAL STRING_LITERAL|LETRAS) PONTOVIRGULA?;
 
 expressao:
      NUMEROS
@@ -60,6 +61,7 @@ logico: expressaoLogico (OP_LOGICO expressaoLogico)+;
 expressaoRelacional:
     | NUMEROS
     | NUMEROS_DECIMAL
+    | STRING_LITERAL
     | LETRAS
     | LPAREN expressaoRelacional RPAREN
     ;

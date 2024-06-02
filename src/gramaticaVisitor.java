@@ -100,6 +100,12 @@ public interface gramaticaVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitInteracao(gramaticaParser.InteracaoContext ctx);
 	/**
+	 * Visit a parse tree produced by {@link gramaticaParser#interacaoString}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitInteracaoString(gramaticaParser.InteracaoStringContext ctx);
+	/**
 	 * Visit a parse tree produced by {@link gramaticaParser#expressao}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
