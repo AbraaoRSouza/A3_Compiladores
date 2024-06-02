@@ -1,61 +1,62 @@
 grammar gramatica;
-ASSIGN: '=';
-SEMICOLON: ';';
-LPAREN: '(';
-RPAREN: ')';
-LBRACE: '{';
-RBRACE: '}';
-COMMA: ',';
-PLUS: '+';
-MINUS: '-';
-TIMES: '*';
-DIVIDE: '/';
-AMPERSAND: '&';
-POWER: '**';
-OP_RELACIONAL: '>'|'<'|'>='|'<='|'!='|'==';
-STRING: [a-zA-Z_][a-zA-Z0-9_]*;
-NUMBER: [0-9]+('.'[0-9]+)?;
-STRING_LITERAL: '"' .*? '"';
-WS: [ \t\r\n]+ -> skip;
+
+import Token;
 
 // Definição da gramática
 program: statement*;
 
 statement:
-    varDeclaration SEMICOLON
+    varDeclaration
     | ifStatement
     | whileStatement
     | forStatement
-    | printfStatement SEMICOLON
-    | scanfStatement SEMICOLON
-    | assignment SEMICOLON
+    | printfStatement
+    | scanfStatement
+    | assignment
     | interation;
 
-varDeclaration: ('int' | 'double' | 'string') STRING (ASSIGN expression);
 
-ifStatement: 'if' LPAREN expression RPAREN LBRACE statement+ RBRACE ('else' LBRACE statement+ RBRACE)?;
 
-whileStatement: 'while' LPAREN expression RPAREN LBRACE statement+ RBRACE;
+varNumberDecimalDeclaration: DOUBLE LETTER (ASSIGN (NUMBER_DECIMAL|mathExpression))? SEMICOLON;
+
+varNumberDeclaration: INT LETTER (ASSIGN (NUMBER|mathExpression))? SEMICOLON;
+
+varStringDeclaration: STRING LETTER (ASSIGN STRING_LITERAL)? SEMICOLON;
+
+varDeclaration: varNumberDecimalDeclaration | varNumberDeclaration | varStringDeclaration;
+
+ifStatement: IF LPAREN expression RPAREN LBRACE statement+ RBRACE (ELSE LBRACE statement+ RBRACE)?;
+
+whileStatement: WHILE LPAREN expression RPAREN LBRACE statement+ RBRACE;
+
+assignmentToFor: (INT|DOUBLE)? LETTER (ASSIGN (NUMBER | NUMBER_DECIMAL))?;
 
 forStatement:
-    'for' LPAREN assignment SEMICOLON expression SEMICOLON interation RPAREN LBRACE statement+ RBRACE;
+    FOR LPAREN (assignmentToFor|LETTER) SEMICOLON expression SEMICOLON interation RPAREN LBRACE statement+ RBRACE;
 
-ampersandVarStatement:AMPERSAND STRING;
-printfStatement:'printf' LPAREN expression (COMMA ampersandVarStatement)? RPAREN;
+ampersandVarStatement:AMPERSAND LETTER;
 
-scanfStatement:'scanf' LPAREN expression (COMMA ampersandVarStatement)? RPAREN;
+printfStatement:PRINTF LPAREN expression (COMMA ampersandVarStatement)? RPAREN SEMICOLON;
 
-assignment: STRING ASSIGN (expression|scanfStatement);
+scanfStatement:SCANF LPAREN expression (COMMA ampersandVarStatement)? RPAREN SEMICOLON;
 
-interation: STRING ('++'|'--');
+assignment: LETTER ASSIGN (expression SEMICOLON|scanfStatement);
+
+interation: LETTER (INCREASE|REDUCE|((PLUS|MINUS) NUMBER)) SEMICOLON?;
 
 expression:
-    expression(POWER) expression
-    | expression (TIMES|DIVIDE) expression
-    | expression (PLUS|MINUS) expression
+     mathExpression
     | expression OP_RELACIONAL expression
     | NUMBER
+    | NUMBER_DECIMAL
     | STRING_LITERAL
-    | STRING
+    | LETTER
     | LPAREN expression RPAREN
     ;
+
+mathExpression:
+ mathExpression (TIMES|DIVIDE) mathExpression
+    | mathExpression (PLUS|MINUS) mathExpression
+    | NUMBER
+    | NUMBER_DECIMAL
+    | LPAREN mathExpression RPAREN;

@@ -1,4 +1,4 @@
-// Generated from C:/Users/Pichau/Desktop/Estudos Java-Spring/linguagem/gramatica.g4 by ANTLR 4.13.1
+// Generated from C:/Users/Pichau/Desktop/linguagem/A3_Compiladores/gramatica.g4 by ANTLR 4.13.1
 import org.antlr.v4.runtime.tree.ParseTreeVisitor;
 
 /**
@@ -22,39 +22,93 @@ public interface gramaticaVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitStatement(gramaticaParser.StatementContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link gramaticaParser#visibility}.
+	 * Visit a parse tree produced by {@link gramaticaParser#varNumberDecimalDeclaration}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitVisibility(gramaticaParser.VisibilityContext ctx);
+	T visitVarNumberDecimalDeclaration(gramaticaParser.VarNumberDecimalDeclarationContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link gramaticaParser#dataType}.
+	 * Visit a parse tree produced by {@link gramaticaParser#varNumberDeclaration}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitDataType(gramaticaParser.DataTypeContext ctx);
+	T visitVarNumberDeclaration(gramaticaParser.VarNumberDeclarationContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link gramaticaParser#typeInt}.
+	 * Visit a parse tree produced by {@link gramaticaParser#varStringDeclaration}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitTypeInt(gramaticaParser.TypeIntContext ctx);
+	T visitVarStringDeclaration(gramaticaParser.VarStringDeclarationContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link gramaticaParser#typeString}.
+	 * Visit a parse tree produced by {@link gramaticaParser#varDeclaration}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitTypeString(gramaticaParser.TypeStringContext ctx);
+	T visitVarDeclaration(gramaticaParser.VarDeclarationContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link gramaticaParser#typeDouble}.
+	 * Visit a parse tree produced by {@link gramaticaParser#ifStatement}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitTypeDouble(gramaticaParser.TypeDoubleContext ctx);
+	T visitIfStatement(gramaticaParser.IfStatementContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link gramaticaParser#declaration}.
+	 * Visit a parse tree produced by {@link gramaticaParser#whileStatement}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitDeclaration(gramaticaParser.DeclarationContext ctx);
+	T visitWhileStatement(gramaticaParser.WhileStatementContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link gramaticaParser#assignmentToFor}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitAssignmentToFor(gramaticaParser.AssignmentToForContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link gramaticaParser#forStatement}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitForStatement(gramaticaParser.ForStatementContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link gramaticaParser#ampersandVarStatement}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitAmpersandVarStatement(gramaticaParser.AmpersandVarStatementContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link gramaticaParser#printfStatement}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitPrintfStatement(gramaticaParser.PrintfStatementContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link gramaticaParser#scanfStatement}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitScanfStatement(gramaticaParser.ScanfStatementContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link gramaticaParser#assignment}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitAssignment(gramaticaParser.AssignmentContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link gramaticaParser#interation}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitInteration(gramaticaParser.InterationContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link gramaticaParser#expression}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitExpression(gramaticaParser.ExpressionContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link gramaticaParser#mathExpression}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitMathExpression(gramaticaParser.MathExpressionContext ctx);
 }
