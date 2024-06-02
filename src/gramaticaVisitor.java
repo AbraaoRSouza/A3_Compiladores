@@ -10,105 +10,141 @@ import org.antlr.v4.runtime.tree.ParseTreeVisitor;
  */
 public interface gramaticaVisitor<T> extends ParseTreeVisitor<T> {
 	/**
-	 * Visit a parse tree produced by {@link gramaticaParser#program}.
+	 * Visit a parse tree produced by {@link gramaticaParser#programa}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitProgram(gramaticaParser.ProgramContext ctx);
+	T visitPrograma(gramaticaParser.ProgramaContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link gramaticaParser#statement}.
+	 * Visit a parse tree produced by {@link gramaticaParser#declaracoes}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitStatement(gramaticaParser.StatementContext ctx);
+	T visitDeclaracoes(gramaticaParser.DeclaracoesContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link gramaticaParser#varNumberDecimalDeclaration}.
+	 * Visit a parse tree produced by {@link gramaticaParser#declaracaoVariavelDouble}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitVarNumberDecimalDeclaration(gramaticaParser.VarNumberDecimalDeclarationContext ctx);
+	T visitDeclaracaoVariavelDouble(gramaticaParser.DeclaracaoVariavelDoubleContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link gramaticaParser#varNumberDeclaration}.
+	 * Visit a parse tree produced by {@link gramaticaParser#declaracaoVariavelInt}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitVarNumberDeclaration(gramaticaParser.VarNumberDeclarationContext ctx);
+	T visitDeclaracaoVariavelInt(gramaticaParser.DeclaracaoVariavelIntContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link gramaticaParser#varStringDeclaration}.
+	 * Visit a parse tree produced by {@link gramaticaParser#declaracaoVariavelString}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitVarStringDeclaration(gramaticaParser.VarStringDeclarationContext ctx);
+	T visitDeclaracaoVariavelString(gramaticaParser.DeclaracaoVariavelStringContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link gramaticaParser#varDeclaration}.
+	 * Visit a parse tree produced by {@link gramaticaParser#declaracaoVariavel}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitVarDeclaration(gramaticaParser.VarDeclarationContext ctx);
+	T visitDeclaracaoVariavel(gramaticaParser.DeclaracaoVariavelContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link gramaticaParser#ifStatement}.
+	 * Visit a parse tree produced by {@link gramaticaParser#estruturaIf}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitIfStatement(gramaticaParser.IfStatementContext ctx);
+	T visitEstruturaIf(gramaticaParser.EstruturaIfContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link gramaticaParser#whileStatement}.
+	 * Visit a parse tree produced by {@link gramaticaParser#estruturaWhile}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitWhileStatement(gramaticaParser.WhileStatementContext ctx);
+	T visitEstruturaWhile(gramaticaParser.EstruturaWhileContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link gramaticaParser#assignmentToFor}.
+	 * Visit a parse tree produced by {@link gramaticaParser#atribuicaoFor}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitAssignmentToFor(gramaticaParser.AssignmentToForContext ctx);
+	T visitAtribuicaoFor(gramaticaParser.AtribuicaoForContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link gramaticaParser#forStatement}.
+	 * Visit a parse tree produced by {@link gramaticaParser#estruturaFor}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitForStatement(gramaticaParser.ForStatementContext ctx);
+	T visitEstruturaFor(gramaticaParser.EstruturaForContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link gramaticaParser#ampersandVarStatement}.
+	 * Visit a parse tree produced by {@link gramaticaParser#leituraVar}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitAmpersandVarStatement(gramaticaParser.AmpersandVarStatementContext ctx);
+	T visitLeituraVar(gramaticaParser.LeituraVarContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link gramaticaParser#printfStatement}.
+	 * Visit a parse tree produced by {@link gramaticaParser#estruturaPrintf}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitPrintfStatement(gramaticaParser.PrintfStatementContext ctx);
+	T visitEstruturaPrintf(gramaticaParser.EstruturaPrintfContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link gramaticaParser#scanfStatement}.
+	 * Visit a parse tree produced by {@link gramaticaParser#estruturaScanf}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitScanfStatement(gramaticaParser.ScanfStatementContext ctx);
+	T visitEstruturaScanf(gramaticaParser.EstruturaScanfContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link gramaticaParser#assignment}.
+	 * Visit a parse tree produced by {@link gramaticaParser#atribuicaoVariavel}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitAssignment(gramaticaParser.AssignmentContext ctx);
+	T visitAtribuicaoVariavel(gramaticaParser.AtribuicaoVariavelContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link gramaticaParser#interation}.
+	 * Visit a parse tree produced by {@link gramaticaParser#interacao}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitInteration(gramaticaParser.InterationContext ctx);
+	T visitInteracao(gramaticaParser.InteracaoContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link gramaticaParser#expression}.
+	 * Visit a parse tree produced by {@link gramaticaParser#expressao}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitExpression(gramaticaParser.ExpressionContext ctx);
+	T visitExpressao(gramaticaParser.ExpressaoContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link gramaticaParser#mathExpression}.
+	 * Visit a parse tree produced by {@link gramaticaParser#relacional}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitMathExpression(gramaticaParser.MathExpressionContext ctx);
+	T visitRelacional(gramaticaParser.RelacionalContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link gramaticaParser#logico}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitLogico(gramaticaParser.LogicoContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link gramaticaParser#expressaoRelacional}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitExpressaoRelacional(gramaticaParser.ExpressaoRelacionalContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link gramaticaParser#expressaoLogico}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitExpressaoLogico(gramaticaParser.ExpressaoLogicoContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link gramaticaParser#expressaoMatematica}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitExpressaoMatematica(gramaticaParser.ExpressaoMatematicaContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link gramaticaParser#term}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitTerm(gramaticaParser.TermContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link gramaticaParser#fator}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitFator(gramaticaParser.FatorContext ctx);
 }

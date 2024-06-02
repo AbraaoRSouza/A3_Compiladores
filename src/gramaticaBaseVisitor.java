@@ -17,117 +17,159 @@ public class gramaticaBaseVisitor<T> extends AbstractParseTreeVisitor<T> impleme
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitProgram(gramaticaParser.ProgramContext ctx) { return visitChildren(ctx); }
+	@Override public T visitPrograma(gramaticaParser.ProgramaContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitStatement(gramaticaParser.StatementContext ctx) { return visitChildren(ctx); }
+	@Override public T visitDeclaracoes(gramaticaParser.DeclaracoesContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitVarNumberDecimalDeclaration(gramaticaParser.VarNumberDecimalDeclarationContext ctx) { return visitChildren(ctx); }
+	@Override public T visitDeclaracaoVariavelDouble(gramaticaParser.DeclaracaoVariavelDoubleContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitVarNumberDeclaration(gramaticaParser.VarNumberDeclarationContext ctx) { return visitChildren(ctx); }
+	@Override public T visitDeclaracaoVariavelInt(gramaticaParser.DeclaracaoVariavelIntContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitVarStringDeclaration(gramaticaParser.VarStringDeclarationContext ctx) { return visitChildren(ctx); }
+	@Override public T visitDeclaracaoVariavelString(gramaticaParser.DeclaracaoVariavelStringContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitVarDeclaration(gramaticaParser.VarDeclarationContext ctx) { return visitChildren(ctx); }
+	@Override public T visitDeclaracaoVariavel(gramaticaParser.DeclaracaoVariavelContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitIfStatement(gramaticaParser.IfStatementContext ctx) { return visitChildren(ctx); }
+	@Override public T visitEstruturaIf(gramaticaParser.EstruturaIfContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitWhileStatement(gramaticaParser.WhileStatementContext ctx) { return visitChildren(ctx); }
+	@Override public T visitEstruturaWhile(gramaticaParser.EstruturaWhileContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitAssignmentToFor(gramaticaParser.AssignmentToForContext ctx) { return visitChildren(ctx); }
+	@Override public T visitAtribuicaoFor(gramaticaParser.AtribuicaoForContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitForStatement(gramaticaParser.ForStatementContext ctx) { return visitChildren(ctx); }
+	@Override public T visitEstruturaFor(gramaticaParser.EstruturaForContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitAmpersandVarStatement(gramaticaParser.AmpersandVarStatementContext ctx) { return visitChildren(ctx); }
+	@Override public T visitLeituraVar(gramaticaParser.LeituraVarContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitPrintfStatement(gramaticaParser.PrintfStatementContext ctx) { return visitChildren(ctx); }
+	@Override public T visitEstruturaPrintf(gramaticaParser.EstruturaPrintfContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitScanfStatement(gramaticaParser.ScanfStatementContext ctx) { return visitChildren(ctx); }
+	@Override public T visitEstruturaScanf(gramaticaParser.EstruturaScanfContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitAssignment(gramaticaParser.AssignmentContext ctx) { return visitChildren(ctx); }
+	@Override public T visitAtribuicaoVariavel(gramaticaParser.AtribuicaoVariavelContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitInteration(gramaticaParser.InterationContext ctx) { return visitChildren(ctx); }
+	@Override public T visitInteracao(gramaticaParser.InteracaoContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitExpression(gramaticaParser.ExpressionContext ctx) { return visitChildren(ctx); }
+	@Override public T visitExpressao(gramaticaParser.ExpressaoContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitMathExpression(gramaticaParser.MathExpressionContext ctx) { return visitChildren(ctx); }
+	@Override public T visitRelacional(gramaticaParser.RelacionalContext ctx) { return visitChildren(ctx); }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation returns the result of calling
+	 * {@link #visitChildren} on {@code ctx}.</p>
+	 */
+	@Override public T visitLogico(gramaticaParser.LogicoContext ctx) { return visitChildren(ctx); }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation returns the result of calling
+	 * {@link #visitChildren} on {@code ctx}.</p>
+	 */
+	@Override public T visitExpressaoRelacional(gramaticaParser.ExpressaoRelacionalContext ctx) { return visitChildren(ctx); }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation returns the result of calling
+	 * {@link #visitChildren} on {@code ctx}.</p>
+	 */
+	@Override public T visitExpressaoLogico(gramaticaParser.ExpressaoLogicoContext ctx) { return visitChildren(ctx); }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation returns the result of calling
+	 * {@link #visitChildren} on {@code ctx}.</p>
+	 */
+	@Override public T visitExpressaoMatematica(gramaticaParser.ExpressaoMatematicaContext ctx) { return visitChildren(ctx); }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation returns the result of calling
+	 * {@link #visitChildren} on {@code ctx}.</p>
+	 */
+	@Override public T visitTerm(gramaticaParser.TermContext ctx) { return visitChildren(ctx); }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation returns the result of calling
+	 * {@link #visitChildren} on {@code ctx}.</p>
+	 */
+	@Override public T visitFator(gramaticaParser.FatorContext ctx) { return visitChildren(ctx); }
 }

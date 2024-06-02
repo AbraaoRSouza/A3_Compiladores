@@ -3,60 +3,83 @@ grammar gramatica;
 import Token;
 
 // Definição da gramática
-program: statement*;
+programa: declaracoes*;
 
-statement:
-    varDeclaration
-    | ifStatement
-    | whileStatement
-    | forStatement
-    | printfStatement
-    | scanfStatement
-    | assignment
-    | interation;
+declaracoes:
+    declaracaoVariavel
+    | estruturaIf
+    | estruturaWhile
+    | estruturaFor
+    | estruturaPrintf
+    | estruturaScanf
+    | atribuicaoVariavel
+    | interacao;
 
+declaracaoVariavelDouble: DOUBLE LETRAS (IGUAL (NUMEROS_DECIMAL|expressaoMatematica))? PONTOVIRGULA;
 
+declaracaoVariavelInt: INT LETRAS (IGUAL (NUMEROS|expressaoMatematica))? PONTOVIRGULA;
 
-varNumberDecimalDeclaration: DOUBLE LETTER (ASSIGN (NUMBER_DECIMAL|mathExpression))? SEMICOLON;
+declaracaoVariavelString: STRING LETRAS (IGUAL STRING_LITERAL)? PONTOVIRGULA;
 
-varNumberDeclaration: INT LETTER (ASSIGN (NUMBER|mathExpression))? SEMICOLON;
+declaracaoVariavel: declaracaoVariavelDouble | declaracaoVariavelInt | declaracaoVariavelString;
 
-varStringDeclaration: STRING LETTER (ASSIGN STRING_LITERAL)? SEMICOLON;
+estruturaIf: IF LPAREN expressao? RPAREN LBRACE declaracoes+ RBRACE (ELSE LBRACE declaracoes+ RBRACE)?;
 
-varDeclaration: varNumberDecimalDeclaration | varNumberDeclaration | varStringDeclaration;
+estruturaWhile: WHILE LPAREN expressao RPAREN LBRACE declaracoes+ RBRACE;
 
-ifStatement: IF LPAREN expression RPAREN LBRACE statement+ RBRACE (ELSE LBRACE statement+ RBRACE)?;
+atribuicaoFor: (INT|DOUBLE)? LETRAS (IGUAL (NUMEROS | NUMEROS_DECIMAL))?;
 
-whileStatement: WHILE LPAREN expression RPAREN LBRACE statement+ RBRACE;
+estruturaFor:
+    FOR LPAREN (atribuicaoFor|LETRAS) PONTOVIRGULA expressao PONTOVIRGULA interacao RPAREN LBRACE declaracoes+ RBRACE;
 
-assignmentToFor: (INT|DOUBLE)? LETTER (ASSIGN (NUMBER | NUMBER_DECIMAL))?;
+leituraVar:E_COMERCIAL LETRAS;
 
-forStatement:
-    FOR LPAREN (assignmentToFor|LETTER) SEMICOLON expression SEMICOLON interation RPAREN LBRACE statement+ RBRACE;
+estruturaPrintf:PRINTF LPAREN expressao (VIRGULA LETRAS)? RPAREN PONTOVIRGULA;
 
-ampersandVarStatement:AMPERSAND LETTER;
+estruturaScanf:SCANF LPAREN expressao (VIRGULA leituraVar)? RPAREN PONTOVIRGULA;
 
-printfStatement:PRINTF LPAREN expression (COMMA ampersandVarStatement)? RPAREN SEMICOLON;
+atribuicaoVariavel: LETRAS IGUAL expressao PONTOVIRGULA;
 
-scanfStatement:SCANF LPAREN expression (COMMA ampersandVarStatement)? RPAREN SEMICOLON;
+interacao: LETRAS (INCREMENTO|DECREMENTO|((MAIS|MENOS) NUMEROS)) PONTOVIRGULA?;
 
-assignment: LETTER ASSIGN (expression SEMICOLON|scanfStatement);
-
-interation: LETTER (INCREASE|REDUCE|((PLUS|MINUS) NUMBER)) SEMICOLON?;
-
-expression:
-     mathExpression
-    | expression OP_RELACIONAL expression
-    | NUMBER
-    | NUMBER_DECIMAL
+expressao:
+     NUMEROS
+    | NUMEROS_DECIMAL
     | STRING_LITERAL
-    | LETTER
-    | LPAREN expression RPAREN
+    | LETRAS
+    | expressaoMatematica
+    | relacional
+    | logico
+    | LPAREN expressao RPAREN
     ;
 
-mathExpression:
- mathExpression (TIMES|DIVIDE) mathExpression
-    | mathExpression (PLUS|MINUS) mathExpression
-    | NUMBER
-    | NUMBER_DECIMAL
-    | LPAREN mathExpression RPAREN;
+relacional: expressaoRelacional (OP_RELACIONAL expressaoRelacional)+;
+
+logico: expressaoLogico (OP_LOGICO expressaoLogico)+;
+
+expressaoRelacional:
+    | NUMEROS
+    | NUMEROS_DECIMAL
+    | LETRAS
+    | LPAREN expressaoRelacional RPAREN
+    ;
+
+expressaoLogico:
+    expressaoMatematica
+    | relacional
+    | NUMEROS
+    | NUMEROS_DECIMAL
+    | LETRAS
+    | LPAREN expressaoLogico RPAREN
+    ;
+
+expressaoMatematica:
+    term ((MAIS|MENOS) term)*;
+
+term:
+    fator ((MULT|DIVISAO) fator)*;
+
+fator:
+    NUMEROS
+    |NUMEROS_DECIMAL
+    | LPAREN expressaoMatematica RPAREN;
