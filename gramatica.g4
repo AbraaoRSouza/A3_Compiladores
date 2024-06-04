@@ -3,8 +3,8 @@ grammar gramatica;
 import Token;
 
 // Definição da gramática
-programa: declaracoes*;
 
+programa: declaracoes*;
 declaracoes:
     declaracaoVariavel
     | estruturaIf
@@ -13,7 +13,8 @@ declaracoes:
     | estruturaPrintf
     | estruturaScanf
     | atribuicaoVariavel
-    | interacao;
+    | interacao
+    | interacaoString;
 
 declaracaoVariavelDouble: DOUBLE LETRAS (IGUAL (NUMEROS_DECIMAL|expressaoMatematica))? PONTOVIRGULA;
 
@@ -41,6 +42,7 @@ estruturaScanf:SCANF LPAREN expressao (VIRGULA leituraVar)? RPAREN PONTOVIRGULA;
 atribuicaoVariavel: LETRAS IGUAL expressao PONTOVIRGULA;
 
 interacao: LETRAS (INCREMENTO|DECREMENTO|((MAIS|MENOS)IGUAL NUMEROS)) PONTOVIRGULA?;
+
 interacaoString: LETRAS ((MAIS|MENOS)IGUAL STRING_LITERAL|LETRAS) PONTOVIRGULA?;
 
 expressao:
