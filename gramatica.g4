@@ -2,8 +2,6 @@ grammar gramatica;
 
 import Token;
 
-// Definição da gramática
-
 programa: declaracoes*;
 declaracoes:
     declaracaoVariavel
